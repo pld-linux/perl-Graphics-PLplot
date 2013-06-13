@@ -1,0 +1,11 @@
+--- Graphics-PLplot-0.03/PLplot.xs.orig	2004-03-07 22:21:06.000000000 +0100
++++ Graphics-PLplot-0.03/PLplot.xs	2013-06-13 16:29:31.403874547 +0200
+@@ -1174,7 +1174,7 @@
+   int status;
+  PPCODE:
+   /* $ARGV[0] is not the program name in perl */
+-  status = plParseOpts( &ix_argv, argv, mode | PL_PARSE_NOPROGRAM );
++  status = c_plparseopts( &ix_argv, argv, mode | PL_PARSE_NOPROGRAM );
+   XPUSHs( sv_2mortal(newSViv(status) ));  
+   XPUSHs( newRV_noinc( (SV*)unpack1Dchar( argv, ix_argv) ));
+ 
