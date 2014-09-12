@@ -60,6 +60,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc README
 %{perl_vendorarch}/Graphics/*.pm
 %dir %{perl_vendorarch}/auto/Graphics/PLplot
-%{perl_vendorarch}/auto/Graphics/PLplot/*.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/Graphics/PLplot/*.so
 %{_mandir}/man3/*
