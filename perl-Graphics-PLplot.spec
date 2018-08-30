@@ -8,7 +8,7 @@
 Summary:	Graphics::PLplot - Perl interface to the PLplot plotting library
 Name:		perl-Graphics-PLplot
 Version:	0.03
-Release:	11
+Release:	12
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Graphics/%{pdir}-%{pnam}-%{version}.tar.gz
