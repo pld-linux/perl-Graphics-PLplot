@@ -4,7 +4,6 @@
 #
 %define		pdir	Graphics
 %define		pnam	PLplot
-%include	/usr/lib/rpm/macros.perl
 Summary:	Graphics::PLplot - Perl interface to the PLplot plotting library
 Name:		perl-Graphics-PLplot
 Version:	0.03
