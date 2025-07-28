@@ -1,0 +1,58 @@
+--- Graphics-PLplot-0.03/PLplot.xs.orig	2025-07-28 16:25:33.050341590 +0200
++++ Graphics-PLplot-0.03/PLplot.xs	2025-07-28 17:05:44.778260312 +0200
+@@ -588,7 +588,7 @@
+       k++;
+     }
+   }
+-  plimage( data, nx_pdata, ny_pdata, xmin, xmax, ymin, ymax, zmin, zmax, Dxmin, Dxmax, Dymin, Dymax);
++  plimage( (PLFLT_MATRIX) data, nx_pdata, ny_pdata, xmin, xmax, ymin, ymax, zmin, zmax, Dxmin, Dxmax, Dymin, Dymax);
+   plFree2dGrid(data,nx_pdata,ny_pdata);
+ 
+ 
+@@ -939,7 +939,7 @@
+   char * laby
+   char * labtop
+  CODE:
+-   c_plstripc( &RETVAL, xspec, yspec, xmin, xmax, xjump, ymin, ymax, xlpos, ylpos, (PLINT)y_ascl, (PLINT)acc, colbox, collab, colline, styline, legline, labx, laby, labtop);
++   c_plstripc( &RETVAL, xspec, yspec, xmin, xmax, xjump, ymin, ymax, xlpos, ylpos, (PLINT)y_ascl, (PLINT)acc, colbox, collab, colline, styline, (PLCHAR_MATRIX) legline, labx, laby, labtop);
+  OUTPUT:
+   RETVAL
+ 
+@@ -999,7 +999,7 @@
+       k++;
+     }
+   }
+-  plsurf3d(x,y,zdata,nx_z,ny_z,opt,clevel, ix_clevel);
++  plsurf3d(x,y,(PLFLT_MATRIX)zdata,nx_z,ny_z,opt,clevel, ix_clevel);
+ 
+ 
+ 
+@@ -1089,8 +1089,8 @@
+   PLFLT az
+ 
+ void
+-c_plwid( width )
+-  PLINT width
++c_plwidth( width )
++  PLFLT width
+ 
+ void
+ c_plwind( xmin, xmax, ymin, ymax )
+@@ -1122,7 +1122,7 @@
+   /* Guess at largest number of drivers !! */
+   menustr = get_mortalspace( 1024, 'v');
+   devname = get_mortalspace( 1024, 'v');
+-  plgFileDevs(&menustr, &devname, &ndev);
++  plgFileDevs((PLCHAR_VECTOR **)&menustr, (PLCHAR_VECTOR **)&devname, &ndev);
+   XPUSHs( newRV_noinc( (SV*)unpack1Dchar( menustr, ndev) ));
+   XPUSHs( newRV_noinc( (SV*)unpack1Dchar( devname, ndev) ));
+ 
+@@ -1136,7 +1136,7 @@
+   /* Guess at largest number of drivers !! */
+   menustr = get_mortalspace( 1024, 'v');
+   devname = get_mortalspace( 1024, 'v');
+-  plgDevs(&menustr, &devname, &ndev);
++  plgDevs((PLCHAR_VECTOR **)&menustr, (PLCHAR_VECTOR **)&devname, &ndev);
+   XPUSHs( newRV_noinc( (SV*)unpack1Dchar( menustr, ndev) ));
+   XPUSHs( newRV_noinc( (SV*)unpack1Dchar( devname, ndev) ));
+ 

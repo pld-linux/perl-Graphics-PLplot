@@ -14,6 +14,7 @@ Group:		Development/Languages/Perl
 Source0:	https://www.cpan.org/modules/by-module/Graphics/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	95a1cfeef5522f963357b1a757e9ba08
 Patch0:		fix-plplot-call.patch
+Patch1:		types.patch
 URL:		https://metacpan.org/dist/Graphics-PLplot
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	plplot-devel
@@ -37,6 +38,7 @@ podobny do interfejsu C.
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
 %patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %{__perl} Makefile.PL \
